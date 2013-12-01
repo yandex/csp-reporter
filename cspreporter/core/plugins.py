@@ -26,7 +26,7 @@ class Output(BasePlugin):
         self.rst_data += '''=============\nCSP Report\n=============\n'''
         self.rst_data += '''\n.. contents::\n\n'''
         for p in processors:
-            self.rst_data += p.title + '\n'
+            self.rst_data += '\n' +p.title + '\n'
             self.rst_data += "=" * (len(p.title) + 5) + '\n'
             tmp_result = p.get_result()
             if tmp_result:
