@@ -1,0 +1,23 @@
+[common]
+debug = no
+default_limit = 5
+
+[plugins.processors.top_filtered]
+keywords = yourhosthere
+
+[plugins.processors.top]
+
+[plugins.processors.directives]
+directives = img-src,style-src,frame-src
+
+[plugins.processors.xss]
+
+[plugins.preprocessors.simple]
+
+[plugins.output.console]
+
+[plugins.output.text]
+filename = report.rst
+
+[plugins.output.html]
+filename = report.html
