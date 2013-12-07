@@ -12,6 +12,8 @@ Requirements:
 * Python 3
 * docutils
 
+.. figure:: https://www.oxdef.info/static/images/csp-reporter.png
+
 To test your web application with implemented CSP you can use `CSP Tester <https://www.oxdef.info/csp-tester>`__
 
 ..  vim:ft=rst
