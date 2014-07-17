@@ -31,6 +31,9 @@ class Directives(Processor):
         directive = None
         if not report.violated_directive:
             return
+ 
+        if not report.blocked_uri:
+            return
         
         for d in self.directives:
             if report.violated_directive.startswith(d):
