@@ -1,4 +1,4 @@
-#!/opt/local/bin/python3.3 -B
+#!/usr/bin/env python3
 
 import configparser
 import argparse
