@@ -1,6 +1,6 @@
-from cspreporter.core.plugins import Preprocessor
+from cspreporter.core.plugins import LogFormat
 
-class Simple(Preprocessor):
+class Simple(LogFormat):
     title = 'Clean up log'
     desc = 'This plugin cleans up log entries to JSON data only'
 
@@ -8,7 +8,8 @@ class Simple(Preprocessor):
         pass
 
     def process(self, s):
-        return s[s.rfind('{"csp-report"'):]
+        tmp = s.decode()
+        return tmp[tmp.rfind('{"csp-report"'):]
 
     def teardown(self):
         pass

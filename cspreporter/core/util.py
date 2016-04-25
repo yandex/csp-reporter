@@ -18,11 +18,18 @@ class CSPReport(object):
             return self.directives[n]
         raise AttributeError
 
-    def load_from_string(self, s):
-        j = json.loads(s.strip())
+    def load_from_string(self, s, logformat):
+        result = False
+        data = logformat.process(s).strip()
+        try:
+            j = json.loads(data)
+        except:
+            return result
         for d in self.directives:
             if d in j['csp-report']:
                 self.directives[d] = j['csp-report'][d]
+                result = True
+        return result
 
 def load_plugin(pname, ptype, config):
     m = importlib.import_module('cspreporter.plugins.' + ptype + '.' + pname)

@@ -43,8 +43,8 @@ class Output(BasePlugin):
     def teardown(self):
         raise NotImplementedError
 
-class Preprocessor(BasePlugin):
-    ptype = 'preprocessor'
+class LogFormat(BasePlugin):
+    ptype = 'logformat'
 
     def setup(self):
         raise NotImplementedError

@@ -12,9 +12,7 @@ directives = img-src,style-src,frame-src
 
 [plugins.processors.xss]
 
-[plugins.preprocessors.simple]
-
-[plugins.output.console]
+[plugins.logformats.simple]
 
 [plugins.output.text]
 filename = report.rst
