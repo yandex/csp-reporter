@@ -1,7 +1,7 @@
 CSP Reporter
 =============
 
-* Homepage: https://www.oxdef.info/csp-reporter
+* Homepage: https://oxdef.info/csp-reporter
 * Author: `oxdef <mailto:oxdef@oxdef.info>`__ 
 
 In a nutshell it is a parser for CSP (Content Security Policy) reports. 
@@ -12,8 +12,8 @@ Requirements:
 * Python 3
 * docutils
 
-.. figure:: https://www.oxdef.info/static/images/csp-reporter.png
+.. figure:: https://oxdef.info/downloads/csp-reporter.png
 
-To test your web application with implemented CSP you can use `CSP Tester <https://www.oxdef.info/csp-tester>`__
+To test your web application with implemented CSP you can use `CSP Tester <https://oxdef.info/csp-tester>`__
 
 ..  vim:ft=rst
