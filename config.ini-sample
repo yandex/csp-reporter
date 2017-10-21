@@ -2,20 +2,22 @@
 debug = no
 default_limit = 5
 
-[plugins.processors.top_filtered]
+[plugins.top_filtered]
 keywords = yourhosthere
 
-[plugins.processors.top]
+[plugins.top]
 
-[plugins.processors.directives]
+[plugins.directives]
 directives = img-src,style-src,frame-src
 
-[plugins.processors.xss]
+[plugins.xss]
 
-[plugins.logformats.simple]
+; Log format
+[plugins.nginx]
 
-[plugins.output.text]
-filename = report.rst
+; Output
+[plugins.text]
+filename = report.md
 
-[plugins.output.html]
+[plugins.html]
 filename = report.html

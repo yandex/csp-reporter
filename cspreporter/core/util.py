@@ -1,47 +1,39 @@
 import importlib
 import json
 
-class CSPReport(object):
-    def __init__(self):
-        self.directives = {}
-        self.directives['blocked-uri'] = ''
-        self.directives['document-uri'] = '' 
-        self.directives['original-policy'] = '' 
-        self.directives['referrer']= ''
-        self.directives['source-file'] = '' 
-        self.directives['status-code'] = '' 
-        self.directives['violated-directive'] = ''
+import configparser
+CONFIG = None
 
-    def __getattr__(self, name):
-        n = name.replace('_', '-')
-        if n in self.directives:
-            return self.directives[n]
-        raise AttributeError
 
-    def load_from_string(self, s, logformat):
-        result = False
-        data = logformat.process(s).strip()
-        try:
-            j = json.loads(data)
-        except:
-            return result
-        for d in self.directives:
-            if d in j['csp-report']:
-                self.directives[d] = j['csp-report'][d]
-                result = True
-        return result
-
-def load_plugin(pname, ptype, config):
-    m = importlib.import_module('cspreporter.plugins.' + ptype + '.' + pname)
+def load_plugin(pname, config):
+    m = importlib.import_module('cspreporter.plugins.' + pname + '.' + pname)
     pclassname = ''.join([i.title() for i in pname.split('_')])
     return getattr(m, pclassname)(config)
 
-class OuputManager:
-    debug = False
 
-    def __init__(self, debug=False):
-        self.debug = debug
+def load_plugins(config):
+    plugins = {}
+    plugins['logformat'] = []
+    plugins['processor'] = []
+    plugins['output'] = []
 
-    def dbg(self, s):
-        if self.debug: 
-            print(s)
+    for sec in config.sections():
+        if not sec.startswith('plugins.'):
+            continue
+        pname = sec.split('.')[1]
+        i = load_plugin(pname, config)
+        i.setup()
+        plugins[i.ptype].append(i)
+
+    if not plugins['logformat']:
+        plugins['logformat'].append(load_plugin('simple', config))
+
+    return plugins
+
+
+def get_config(config_file='config.ini'):
+    global CONFIG
+    if not CONFIG:
+        CONFIG = configparser.ConfigParser()
+        CONFIG.read(config_file)
+    return CONFIG

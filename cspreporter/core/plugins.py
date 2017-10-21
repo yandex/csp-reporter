@@ -23,18 +23,6 @@ class Output(BasePlugin):
         raise NotImplementedError
 
     def generate_report(self, processors):
-        self.rst_data += '''=============\nCSP Report\n=============\n'''
-        self.rst_data += '''\n.. contents::\n\n'''
-        for p in processors:
-            self.rst_data += '\n' +p.title + '\n'
-            self.rst_data += "=" * (len(p.title) + 5) + '\n'
-            tmp_result = p.get_result()
-            if tmp_result:
-                self.rst_data += tmp_result + '\n'
-            else:
-                self.rst_data +='\n*There is no results.*\n'
-        self.rst_data += '\n\n\n----\n\n'
-        self.rst_data += '''Generated with `CSP Reporter <https://www.oxdef.info/csp-reporter>`__'''
         self._generate_report(processors)
         
     def _generate_report(self, processors):
