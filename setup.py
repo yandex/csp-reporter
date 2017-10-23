@@ -5,7 +5,7 @@ setup(
     name='csp-reporter',
     version='1.1.1',
     description='Parser for CSP (Content Security Policy) reports',
-    author='oxdef',
+    author='Taras Ivashchenko',
     author_email='oxdef@oxdef.info',
     url='https://oxdef.info/csp-reporter',
     packages=find_packages(),
